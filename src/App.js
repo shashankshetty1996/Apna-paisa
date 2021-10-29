@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Navbar from "./components/navbar/Navbar";
 import Transactions from "./components/transactions/Transactions";
 
 import "./App.css";
@@ -8,7 +9,7 @@ import "./App.css";
 class App extends Component {
 	state = {
 		name: "Shashank",
-		balance: 10000,
+		balance: 100,
 		transactions: [
 			{
 				id: 1,
@@ -16,7 +17,7 @@ class App extends Component {
 				amount: 580,
 				type: "debit",
 			},
-			{ id: 2, desc: "Dividend from Stocks!!!", amount: 100, type: "credit" },
+			{ id: 2, desc: "Dividend from Stocks", amount: 100, type: "credit" },
 		],
 		description: "",
 		amount: 0,
@@ -51,13 +52,11 @@ class App extends Component {
 	};
 
 	render() {
-		// Two-way binding
 		const btnDisable = this.state.amount === 0 || this.state.description === "";
 
 		return (
 			<div className="container">
-				<h1>Hello {this.state.name}!</h1>
-				<h4>Balance {this.state.balance}</h4>
+				<Navbar balance={this.state.balance} name={this.state.name} />
 				{this.state.balance >= 100000 ? (
 					<p>You are a Premium customer</p>
 				) : (
@@ -68,11 +67,10 @@ class App extends Component {
 					<Transactions entry={this.state.transactions} />
 				)}
 
-				<h1>Add new Transaction Entry</h1>
-				<div>
-					{/* Take input for desc and amount */}
+				<div className="transaction-form">
+					<h1>Add new Transaction Entry</h1>
 					<form>
-						<div>
+						<div className="flex items-center justify-between">
 							<label htmlFor="desc">Enter Description</label>
 							<input
 								type="text"
@@ -81,7 +79,7 @@ class App extends Component {
 								onChange={this.descriptionUpdate}
 							/>
 						</div>
-						<div>
+						<div className="flex items-center justify-between">
 							<label htmlFor="amount">Enter Amount</label>
 							<input
 								type="number"
@@ -98,9 +96,8 @@ class App extends Component {
 							Submit
 						</button>
 					</form>
-
-					<Transactions entry={this.state.transactions} />
 				</div>
+				<Transactions entry={this.state.transactions} />
 			</div>
 		);
 	}

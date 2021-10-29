@@ -2,3 +2,32 @@
 	width: 80%;
 	margin: 0 auto;
 }
+
+.flex {
+	display: flex;
+}
+
+.items-center {
+	align-items: center;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.transaction-form form {
+	width: 100%;
+	max-width: 720px;
+}
+
+.transaction-form form div {
+	margin: 8px 0;
+}
