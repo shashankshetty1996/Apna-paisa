@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Navbar from "./components/navbar/Navbar";
 import Transactions from "./components/transactions/Transactions";
+import TransactionForm from "./components/transaction-form/TransactionFrom";
 
 import "./App.css";
 
@@ -9,7 +10,7 @@ import "./App.css";
 class App extends Component {
 	state = {
 		name: "Shashank",
-		balance: 100,
+		balance: 10000,
 		transactions: [
 			{
 				id: 1,
@@ -19,41 +20,31 @@ class App extends Component {
 			},
 			{ id: 2, desc: "Dividend from Stocks", amount: 100, type: "credit" },
 		],
-		description: "",
-		amount: 0,
 	};
 
 	updateBalance = (amount) => {
 		this.setState({ balance: amount });
 	};
 
-	descriptionUpdate = ($event) => {
-		const updatedDescription = $event.target.value;
-		this.setState({ description: updatedDescription });
-	};
-
-	updateAmount = ($event) => {
-		const amount = $event.target.value;
-		this.setState({ amount });
-	};
-
-	handleForm = ($event) => {
-		$event.preventDefault();
+	addTransaction = (desc, amount) => {
 		const transactions = [...this.state.transactions];
 		const transaction = {
 			id: transactions.length + 1,
-			desc: this.state.description,
-			amount: this.state.amount,
+			desc: desc,
+			amount: amount,
 			type: "debit",
 		};
 		transactions.push(transaction);
 
-		this.setState({ transactions, description: "", amount: 0 });
+		const updatedBalance = this.state.balance - amount;
+
+		this.setState({ transactions, balance: updatedBalance });
 	};
+	// updateTransactions = (transactions) => {
+	// 	this.setState({ transactions });
+	// };
 
 	render() {
-		const btnDisable = this.state.amount === 0 || this.state.description === "";
-
 		return (
 			<div className="container">
 				<Navbar balance={this.state.balance} name={this.state.name} />
@@ -63,40 +54,16 @@ class App extends Component {
 					<p>You are a Regular customer</p>
 				)}
 
-				{this.state.transactions.length > 2 && (
+				{/* {this.state.transactions.length > 2 && (
 					<Transactions entry={this.state.transactions} />
-				)}
+				)} */}
 
-				<div className="transaction-form">
-					<h1>Add new Transaction Entry</h1>
-					<form>
-						<div className="flex items-center justify-between">
-							<label htmlFor="desc">Enter Description</label>
-							<input
-								type="text"
-								name="desc"
-								value={this.state.description}
-								onChange={this.descriptionUpdate}
-							/>
-						</div>
-						<div className="flex items-center justify-between">
-							<label htmlFor="amount">Enter Amount</label>
-							<input
-								type="number"
-								name="amount"
-								value={this.state.amount}
-								onChange={this.updateAmount}
-							/>
-						</div>
-						<button
-							type="submit"
-							onClick={this.handleForm}
-							disabled={btnDisable}
-						>
-							Submit
-						</button>
-					</form>
-				</div>
+				<TransactionForm addTransaction={this.addTransaction} />
+				{/* <TransactionForm
+					transactions={this.state.transactions}
+					updateTransactions={this.updateTransactions}
+				/> */}
+
 				<Transactions entry={this.state.transactions} />
 			</div>
 		);
