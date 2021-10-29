@@ -1,0 +1,16 @@
+.transactions ul {
+	list-style: none;
+	padding: 0;
+}
+
+.transactions ul li {
+	border: 1px solid black;
+	border-radius: 4px;
+	margin: 8px 0;
+	padding: 8px 16px;
+}
+
+.transactions h1 {
+	color: #865439;
+	margin: 8px 0;
+}
