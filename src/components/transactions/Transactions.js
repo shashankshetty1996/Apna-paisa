@@ -4,10 +4,20 @@ import "./Transactions.css";
 import style from "./Transactions.module.css";
 
 function TransactionEntry(props) {
+	let amountClassName = "transactions-amount";
+	if (props.item.type === "debit") {
+		amountClassName += " transactions-debit";
+	} else if (props.item.type === "credit") {
+		amountClassName += " transactions-credit";
+	}
+	// const amountClassName =
+	// 	props.item.type === "debit"
+	// 		? "transactions-amount transactions-debit"
+	// 		: "transactions-amount transactions-credit";
 	return (
 		<li className="transactions-list-item flex items-center justify-between">
 			<span className="transactions-desc">{props.item.desc}</span>
-			<span className="transactions-amount">{props.item.amount}</span>
+			<span className={amountClassName}>{props.item.amount}</span>
 		</li>
 	);
 }

@@ -26,17 +26,28 @@ class App extends Component {
 		this.setState({ balance: amount });
 	};
 
-	addTransaction = (desc, amount) => {
+	addTransaction = (desc, amount, type) => {
 		const transactions = [...this.state.transactions];
 		const transaction = {
 			id: transactions.length + 1,
-			desc: desc,
-			amount: amount,
-			type: "debit",
+			desc,
+			amount,
+			type,
 		};
 		transactions.push(transaction);
 
-		const updatedBalance = this.state.balance - amount;
+		let updatedBalance;
+		if (type === "debit") {
+			updatedBalance = this.state.balance - amount;
+		} else {
+			updatedBalance = this.state.balance + amount;
+		}
+
+		console.log(
+			typeof updatedBalance,
+			typeof this.state.balance,
+			typeof amount
+		);
 
 		this.setState({ transactions, balance: updatedBalance });
 	};
