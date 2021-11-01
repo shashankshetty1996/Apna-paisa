@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Transactions from "./components/transactions/Transactions";
 import TransactionForm from "./components/transaction-form/TransactionFrom";
+import LifeCycle from "./components/lifecycle/LifeCycle";
 
 import "./App.css";
 
@@ -43,12 +44,6 @@ class App extends Component {
 			updatedBalance = this.state.balance + amount;
 		}
 
-		console.log(
-			typeof updatedBalance,
-			typeof this.state.balance,
-			typeof amount
-		);
-
 		this.setState({ transactions, balance: updatedBalance });
 	};
 	// updateTransactions = (transactions) => {
@@ -57,26 +52,26 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<>
 				<Navbar balance={this.state.balance} name={this.state.name} />
-				{this.state.balance >= 100000 ? (
+				<div className="container">
+					{/* {this.state.balance >= 100000 ? (
 					<p>You are a Premium customer</p>
 				) : (
 					<p>You are a Regular customer</p>
-				)}
-
-				{/* {this.state.transactions.length > 2 && (
-					<Transactions entry={this.state.transactions} />
 				)} */}
 
-				<TransactionForm addTransaction={this.addTransaction} />
-				{/* <TransactionForm
+					<TransactionForm addTransaction={this.addTransaction} />
+					{/* <TransactionForm
 					transactions={this.state.transactions}
 					updateTransactions={this.updateTransactions}
 				/> */}
 
-				<Transactions entry={this.state.transactions} />
-			</div>
+					<Transactions entry={this.state.transactions} />
+
+					{this.state.transactions.length <= 2 && <LifeCycle />}
+				</div>
+			</>
 		);
 	}
 }

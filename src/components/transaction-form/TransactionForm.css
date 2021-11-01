@@ -1,0 +1,8 @@
+.transaction-form form {
+	width: 100%;
+	max-width: 620px;
+}
+
+.transaction-form form div {
+	margin: 8px 0;
+}

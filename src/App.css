@@ -22,12 +22,3 @@
 .justify-end {
 	justify-content: flex-end;
 }
-
-.transaction-form form {
-	width: 100%;
-	max-width: 720px;
-}
-
-.transaction-form form div {
-	margin: 8px 0;
-}

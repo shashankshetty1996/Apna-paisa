@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+import "./TransactionForm.css";
+
 class TransactionForm extends Component {
 	state = {
 		description: "",
@@ -43,7 +45,7 @@ class TransactionForm extends Component {
 		return (
 			<div className="transaction-form">
 				<h1>Add new Transaction Entry</h1>
-				<form>
+				<form autoComplete="off">
 					<div className="flex items-center justify-between">
 						<label htmlFor="desc">Enter Description</label>
 						<input
@@ -70,7 +72,8 @@ class TransactionForm extends Component {
 									type="radio"
 									name="type"
 									checked={this.state.type === "debit"}
-									onChange={() => this.updateType("debit")}
+									// onChange={() => this.updateType("debit")}
+									onChange={this.updateType.bind(this, "debit")}
 								/>
 								Debit
 							</label>

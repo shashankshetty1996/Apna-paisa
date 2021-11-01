@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+import { currencyFormat } from "../../utils/utilities";
+
 import "./Transactions.css";
 import style from "./Transactions.module.css";
 
@@ -17,7 +19,9 @@ function TransactionEntry(props) {
 	return (
 		<li className="transactions-list-item flex items-center justify-between">
 			<span className="transactions-desc">{props.item.desc}</span>
-			<span className={amountClassName}>{props.item.amount}</span>
+			<span className={amountClassName}>
+				{currencyFormat(props.item.amount)}
+			</span>
 		</li>
 	);
 }

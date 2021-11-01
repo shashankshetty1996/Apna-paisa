@@ -2,7 +2,7 @@
 	list-style: none;
 	padding: 0;
 	width: 100%;
-	max-width: 720px;
+	max-width: 620px;
 }
 
 .transactions .transactions-list .transactions-list-item {
@@ -12,22 +12,23 @@
 }
 
 .transactions-desc {
-	padding: 8px 16px;
+	padding: 16px;
 }
 
 .transactions-amount {
 	border-radius: 0 4px 4px 0;
 	padding: 16px;
-	width: 50px;
+	height: 100%;
+	min-width: 100px;
 	text-align: center;
 }
 
 .transactions-debit {
-	background-color: #9b9b6e;
+	background-color: #ac7c6d;
 	color: white;
 }
 
 .transactions-credit {
-	background-color: #ac7c6d;
+	background-color: #9b9b6e;
 	color: white;
 }
