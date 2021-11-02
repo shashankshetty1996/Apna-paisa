@@ -1,5 +1,9 @@
 import { Component } from "react";
 
+import Button from "../../common/button/Button";
+import FormElement from "../../common/form-element/FormElement";
+import Input from "../../common/input/Input";
+
 import "./TransactionForm.css";
 
 class TransactionForm extends Component {
@@ -46,51 +50,59 @@ class TransactionForm extends Component {
 			<div className="transaction-form">
 				<h1>Add new Transaction Entry</h1>
 				<form autoComplete="off">
-					<div className="flex items-center justify-between">
-						<label htmlFor="desc">Enter Description</label>
-						<input
+					<FormElement
+						label="Enter Description"
+						name="description"
+						className="form-container"
+					>
+						<Input
 							type="text"
 							name="desc"
 							value={this.state.description}
 							onChange={this.descriptionUpdate}
 						/>
-					</div>
-					<div className="flex items-center justify-between">
-						<label htmlFor="amount">Enter Amount</label>
-						<input
+					</FormElement>
+					<FormElement
+						label="Enter Amount"
+						name="amount"
+						className="form-container"
+					>
+						<Input
 							type="number"
 							name="amount"
 							value={this.state.amount}
 							onChange={this.updateAmount}
 						/>
-					</div>
-					<div className="flex items-center justify-between">
-						<label htmlFor="type">Select the type of payment</label>
-						<div>
-							<label>
-								<input
-									type="radio"
-									name="type"
-									checked={this.state.type === "debit"}
-									// onChange={() => this.updateType("debit")}
-									onChange={this.updateType.bind(this, "debit")}
-								/>
-								Debit
-							</label>
-							<label>
-								<input
-									type="radio"
-									name="type"
-									checked={this.state.type === "credit"}
-									onChange={() => this.updateType("credit")}
-								/>
-								Credit
-							</label>
-						</div>
-					</div>
-					<button type="submit" onClick={this.handleForm} disabled={btnDisable}>
+					</FormElement>
+
+					<FormElement
+						label="Select the type of payment"
+						name="type"
+						className="form-container"
+					>
+						<label>
+							<input
+								type="radio"
+								name="type"
+								checked={this.state.type === "debit"}
+								// onChange={() => this.updateType("debit")}
+								onChange={this.updateType.bind(this, "debit")}
+							/>
+							Debit
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="type"
+								checked={this.state.type === "credit"}
+								onChange={() => this.updateType("credit")}
+							/>
+							Credit
+						</label>
+					</FormElement>
+					<Button type="submit" onClick={this.handleForm} disabled={btnDisable}>
 						Submit
-					</button>
+					</Button>
 				</form>
 			</div>
 		);

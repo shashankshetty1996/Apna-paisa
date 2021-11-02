@@ -1,0 +1,14 @@
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group .form-label {
+	font-size: 12px;
+	font-weight: 500;
+	margin: 0 0 4px;
+}
+
+.form-group .form-element {
+	margin: 0;
+}

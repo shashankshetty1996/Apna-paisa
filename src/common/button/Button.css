@@ -1,0 +1,22 @@
+.btn {
+	background-color: #ae8468;
+	color: #fff;
+	padding: 8px 32px;
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.btn:hover:not(.disabled) {
+	background-color: #9c7154;
+}
+
+.btn.disabled {
+	background-color: #8f8c8a;
+	cursor: no-drop;
+}
+
+.btn.btn-block {
+	width: 100%;
+}
