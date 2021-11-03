@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Switch, Route, NavLink } from "react-router-dom";
 
 import TransactionForm from "../../components/transaction-form/TransactionFrom";
 import Transactions from "../../components/transactions/Transactions";
+
+import "./Dashboard.css";
 
 export default class Dashboard extends Component {
 	state = {
@@ -37,11 +40,46 @@ export default class Dashboard extends Component {
 		this.props.updateBalance(updatedBalance);
 	};
 
+	// path="/dashboard"
+	// path="/dashboard/transactions"
+	// path="/dashboard/add-transactions"
 	render() {
+		const transactions = <Transactions entry={this.state.transactions} />;
+		const transactionForm = (
+			<TransactionForm addTransaction={this.addTransaction} />
+		);
 		return (
 			<div className="container">
-				<TransactionForm addTransaction={this.addTransaction} />
-				<Transactions entry={this.state.transactions} />
+				{/* Nested routes */}
+				<div className="flex justify-center items-center sub-nav">
+					<NavLink exact to="/dashboard">
+						Dashboard
+					</NavLink>
+					<NavLink
+						exact
+						to={{
+							pathname: "/dashboard/transactions",
+							state: { fromDashboard: true },
+						}}
+					>
+						Transaction List
+					</NavLink>
+					<NavLink exact to="/dashboard/add-transactions">
+						Add Transactions
+					</NavLink>
+				</div>
+				<Switch>
+					<Route path="/dashboard/transactions" exact>
+						{transactions}
+					</Route>
+					<Route path="/dashboard/add-transactions" exact>
+						{transactionForm}
+					</Route>
+					<Route path="/dashboard">
+						{transactions}
+						{transactionForm}
+					</Route>
+				</Switch>
 			</div>
 		);
 	}

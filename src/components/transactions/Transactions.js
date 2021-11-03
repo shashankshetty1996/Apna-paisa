@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 import { currencyFormat } from "../../utils/utilities";
 
@@ -28,9 +29,12 @@ function TransactionEntry(props) {
 
 class Transactions extends Component {
 	render() {
+		console.log(this.props);
+		const { state } = this.props.location;
 		return (
 			<div className="transactions">
 				<h1 className={style.primary}>Transitions</h1>
+				{state?.fromDashboard && <p>you came using NavLink</p>}
 				<ul className="transactions-list">
 					{this.props.entry.map((item) => {
 						return <TransactionEntry key={item.id} item={item} />;
@@ -41,4 +45,4 @@ class Transactions extends Component {
 	}
 }
 
-export default Transactions;
+export default withRouter(Transactions);

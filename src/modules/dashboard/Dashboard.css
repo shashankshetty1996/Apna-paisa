@@ -1,0 +1,12 @@
+.sub-nav {
+	/* box-shadow: 0 1px 2px 2px rgba(00, 00, 00, 0.17); */
+	margin: 16px 0;
+}
+
+.sub-nav a {
+	margin: 0 24px;
+}
+
+.sub-nav a.active {
+	color: #ae8468;
+}

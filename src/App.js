@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./modules/dashboard/Dashboard";
@@ -12,6 +12,7 @@ class App extends Component {
 	state = {
 		name: "Shashank",
 		balance: 10000,
+		show: false,
 	};
 
 	updateBalance = (amount) => {
@@ -23,16 +24,27 @@ class App extends Component {
 			<BrowserRouter>
 				<Navbar balance={this.state.balance} name={this.state.name} />
 				<Switch>
-					<Route path="/" exact>
+					<Route path="/dashboard">
 						<Dashboard
 							updateBalance={this.updateBalance}
 							balance={this.state.balance}
 						/>
 					</Route>
 
-					<Route path="/about">
-						<About />
-					</Route>
+					<Route path="/about" component={About} exact />
+
+					<Route
+						path="/not-found"
+						render={() => (
+							<div className="container">
+								<h1>Page not found</h1>
+							</div>
+						)}
+						exact
+					/>
+
+					<Redirect from="/" to="/dashboard" exact />
+					<Redirect to="/not-found" />
 				</Switch>
 			</BrowserRouter>
 		);
