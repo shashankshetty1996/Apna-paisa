@@ -1,0 +1,19 @@
+.sub-navbar {
+	/* background-color: #e8dcd4; */
+	background-color: #e8dcd4;
+	box-shadow: 0 2px 2px #ae8468;
+	padding: 16px 0;
+}
+
+.sub-navbar a {
+	color: #ae8468;
+	margin: 0 24px 0 0;
+	font-weight: bold;
+	text-decoration: none;
+	transition: all 0.5s ease-in-out;
+}
+
+.sub-navbar a.active,
+.sub-navbar a:hover {
+	color: #865439;
+}

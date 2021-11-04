@@ -1,3 +1,11 @@
+.transaction-form {
+	flex: 50%;
+}
+
+.transaction-form h1 {
+	color: #ae8468;
+}
+
 .transaction-form form {
 	width: 100%;
 	max-width: 620px;

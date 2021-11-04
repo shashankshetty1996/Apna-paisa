@@ -7,6 +7,10 @@
 	display: flex;
 }
 
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
 .items-center {
 	align-items: center;
 }
@@ -21,4 +25,20 @@
 
 .justify-end {
 	justify-content: flex-end;
+}
+
+.gap-1 {
+	gap: 4px;
+}
+
+.gap-2 {
+	gap: 8px;
+}
+
+.gap-3 {
+	gap: 12px;
+}
+
+.gap-4 {
+	gap: 16px;
 }

@@ -4,8 +4,9 @@
 }
 
 .form-group .form-label {
-	font-size: 12px;
-	font-weight: 500;
+	color: #ae8468;
+	font-size: 14px;
+	font-weight: bold;
 	margin: 0 0 4px;
 }
 

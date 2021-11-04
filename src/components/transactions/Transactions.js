@@ -29,7 +29,6 @@ function TransactionEntry(props) {
 
 class Transactions extends Component {
 	render() {
-		console.log(this.props);
 		const { state } = this.props.location;
 		return (
 			<div className="transactions">
