@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import SecondaryNavbar from "../../components/secondary-navbar/SecondaryNavbar";
 
+import SecondaryNavbar from "../../components/secondary-navbar/SecondaryNavbar";
+import TransactionDetails from "../../components/transaction-details/TransactionDetails";
 import TransactionForm from "../../components/transaction-form/TransactionFrom";
 import Transactions from "../../components/transactions/Transactions";
 
@@ -12,11 +13,12 @@ export default class Dashboard extends Component {
 		transactions: [
 			{
 				id: 1,
-				desc: "Paid for HotStar, But India lost!!!",
+				desc: "HotStar, Subscription",
 				amount: 580,
 				type: "debit",
 			},
 			{ id: 2, desc: "Dividend from Stocks", amount: 100, type: "credit" },
+			{ id: 3, desc: "Car loan EMI", amount: 13780, type: "debit" },
 		],
 	};
 
@@ -29,7 +31,7 @@ export default class Dashboard extends Component {
 				state: { fromDashboard: true },
 			},
 		},
-		{ label: "Add Transition", to: "/dashboard/add-transactions" },
+		{ label: "Add Transaction", to: "/dashboard/add-transactions" },
 	];
 
 	addTransaction = (desc, amount, type) => {
@@ -53,11 +55,25 @@ export default class Dashboard extends Component {
 		this.props.updateBalance(updatedBalance);
 	};
 
+	getTransaction = (id) => {
+		const { transactions } = this.state;
+		return transactions.find((transaction) => transaction.id === +id);
+	};
+
 	// path="/dashboard"
 	// path="/dashboard/transactions"
 	// path="/dashboard/add-transactions"
 	render() {
 		const { transactions } = this.state;
+
+		// const debitTransactionsList = transactions.filter(
+		// 	(transaction) => transaction.type === "debit"
+		// );
+		// const creditTransactionsList = transactions.filter(
+		// 	(transaction) => transaction.type === "credit"
+		// );
+
+		// Components
 		const allTransactions = <Transactions entry={transactions} />;
 		const transactionForm = (
 			<TransactionForm addTransaction={this.addTransaction} />
@@ -68,16 +84,27 @@ export default class Dashboard extends Component {
 				<SecondaryNavbar options={this.secondaryNavOptions} />
 				<div className="container">
 					<Switch>
-						<Route path="/dashboard/transactions" exact>
-							{allTransactions}
-						</Route>
 						<Route path="/dashboard/add-transactions" exact>
 							{transactionForm}
 						</Route>
-						<Route path="/dashboard">
-							<div className="flex justify-between flex-wrap">
+						<Route path="/dashboard/transactions" exact>
+							{allTransactions}
+						</Route>
+						<Route path="/dashboard/transaction/:transactionId" exact>
+							<TransactionDetails getTransaction={this.getTransaction} />
+						</Route>
+						<Route path="/dashboard" exact>
+							<div className="flex justify-between flex-wrap gap-4">
 								{allTransactions}
 								{transactionForm}
+								{/* <Transactions
+									title="Debit Transactions"
+									entry={debitTransactionsList}
+								/>
+								<Transactions
+									title="Credit Transactions"
+									entry={creditTransactionsList}
+								/> */}
 							</div>
 						</Route>
 					</Switch>

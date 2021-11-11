@@ -39,52 +39,57 @@ class TransactionForm extends Component {
 		// this.setState({ description: "", amount: 0 });
 		// this.props.updateTransactions(transactions);
 
+		const { addTransaction } = this.props;
 		const { amount, description, type } = this.state;
+
 		this.setState({ description: "", amount: 0 });
-		this.props.addTransaction(description, +amount, type);
+		addTransaction(description, +amount, type);
 	};
 
 	render() {
-		const btnDisable = this.state.amount === 0 || this.state.description === "";
+		const { amount, description, type } = this.state;
+		const btnDisable = amount === 0 || description === "";
+
 		return (
 			<div className="transaction-form">
 				<h1>Add new Transaction Entry</h1>
 				<form autoComplete="off">
 					<FormElement
-						label="Enter Description"
+						label="Enter Description:"
 						name="description"
 						className="form-container"
 					>
 						<Input
 							type="text"
 							name="desc"
-							value={this.state.description}
+							value={description}
 							onChange={this.descriptionUpdate}
 						/>
 					</FormElement>
 					<FormElement
-						label="Enter Amount"
+						label="Enter Amount:"
 						name="amount"
 						className="form-container"
 					>
 						<Input
 							type="number"
 							name="amount"
-							value={this.state.amount}
+							value={amount}
 							onChange={this.updateAmount}
 						/>
 					</FormElement>
 
 					<FormElement
-						label="Select the type of payment"
+						label="Select the type of payment:"
 						name="type"
 						className="form-container"
+						inline
 					>
 						<label>
 							<input
 								type="radio"
 								name="type"
-								checked={this.state.type === "debit"}
+								checked={type === "debit"}
 								// onChange={() => this.updateType("debit")}
 								onChange={this.updateType.bind(this, "debit")}
 							/>
@@ -94,7 +99,7 @@ class TransactionForm extends Component {
 							<input
 								type="radio"
 								name="type"
-								checked={this.state.type === "credit"}
+								checked={type === "credit"}
 								onChange={() => this.updateType("credit")}
 							/>
 							Credit

@@ -1,0 +1,29 @@
+.transaction-details h1 {
+	color: #ae8468;
+}
+
+.transaction-details ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.transaction-details ul li {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	margin: 16px 0;
+}
+
+.transaction-details ul li span {
+	flex: 1;
+	background-color: #e8dcd4;
+	color: #ae8468;
+	padding: 16px;
+}
+
+.transaction-details ul li p {
+	flex: 5;
+	margin: 0;
+	padding: 16px;
+}

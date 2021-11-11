@@ -7,9 +7,16 @@ export default function FormElement(props) {
 		name = "",
 		className = "",
 		labelClassName = "",
+		inline = false,
 	} = props;
 
-	const containerClassName = `form-group ${className}`;
+	let containerClassName = "form-group";
+	if (inline) {
+		containerClassName += " form-group-inline";
+	}
+	if (className) {
+		containerClassName += ` ${className}`;
+	}
 	const labelClass = `form-label ${labelClassName}`;
 
 	return (

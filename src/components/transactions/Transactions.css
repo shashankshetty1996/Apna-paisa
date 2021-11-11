@@ -1,18 +1,19 @@
 .transactions {
-	flex: 50%;
+	flex: calc(50% - 8px);
+	width: 100%;
+	max-width: 620px;
 }
 
 .transactions .transactions-list {
 	list-style: none;
 	padding: 0;
-	width: 100%;
-	max-width: 620px;
 }
 
 .transactions .transactions-list .transactions-list-item {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
 	border-radius: 4px;
 	margin: 16px 0;
+	cursor: pointer;
 }
 
 .transactions-desc {

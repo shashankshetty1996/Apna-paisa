@@ -3,11 +3,15 @@
 	flex-direction: column;
 }
 
+.form-group.form-group-inline {
+	flex-direction: row;
+}
+
 .form-group .form-label {
 	color: #ae8468;
 	font-size: 14px;
 	font-weight: bold;
-	margin: 0 0 4px;
+	margin: 0 8px 4px 0;
 }
 
 .form-group .form-element {

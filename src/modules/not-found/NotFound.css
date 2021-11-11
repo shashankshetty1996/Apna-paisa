@@ -1,0 +1,8 @@
+.not-found {
+	height: 100vh;
+}
+
+.not-found h1 {
+	color: #ae8468;
+	text-transform: capitalize;
+}

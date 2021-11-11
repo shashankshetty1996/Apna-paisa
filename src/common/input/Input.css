@@ -1,4 +1,6 @@
 .input {
+	border: 1px solid #865439;
+	border-radius: 4px;
+	padding: 12px 8px;
 	width: 100%;
-	padding: 8px 4px;
 }
